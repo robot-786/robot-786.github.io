@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | XYNTRA AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FEBE00",
+                        secondary: "#FF8C00",
+                        darkbg: "#121212",
+                        darkcard: "#1E1E1E",
+                        lightbg: "#FAFAFA",
+                        lightcard: "#FFFFFF"
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .contact-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(254,190,0,0.15) 0%, rgba(0,0,0,0) 50%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .glass-card {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .dark .input-field {
+            background: rgba(30, 30, 30, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .input-field:focus {
+            border-color: #FEBE00;
+            box-shadow: 0 0 0 2px rgba(254,190,0,0.2);
+        }
+        .holographic-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .holographic-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(254,190,0,0) 0%,
+                rgba(254,190,0,0) 45%,
+                rgba(254,190,0,0.1) 50%,
+                rgba(254,190,0,0) 55%,
+                rgba(254,190,0,0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+    </style>
+</head>
+<body class="bg-lightbg text-gray-800 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300 min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkcard/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="logo.png" style="width:180px; height:40px;"> 
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="/" class="font-medium hover:text-primary transition-colors">Home</a>
+                <a href="/contact" class="font-medium text-primary transition-colors">Contact</a>
+            </nav>
+            <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="contact-gradient flex-grow">
+        <section class="container mx-auto px-6 py-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Our <span class="text-primary">AI</span> Team</h1>
+                    <p class="text-xl max-w-2xl mx-auto">Have questions about our voice assistants? We're here to help transform your customer service.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="glass-card rounded-2xl p-8 relative overflow-hidden">
+                        <div class="absolute inset-0 z-0">
+                            <div class="absolute top-20 -left-20 w-40 h-40 bg-primary rounded-full filter blur-3xl opacity-10"></div>
+                            <div class="absolute bottom-10 -right-10 w-40 h-40 bg-secondary rounded-full filter blur-3xl opacity-10"></div>
+                        </div>
+                        <div class="relative z-10">
+                            <h2 class="text-2xl font-bold mb-6">Book a free Demo Call</h2>
+                            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                                <input type="hidden" name="access_key" value="539b19dc-0f67-4dea-af3b-a86b3d537221">
+                                <!-- <input type="hidden" name="redirect" value="https://xyntra.ai/thank-you"> -->
+                                
+                                <div class="space-y-1">
+                                    <label for="name" class="block text-sm font-medium">Full Name</label>
+                                    <input type="text" id="name" name="name" required 
+                                        class="input-field w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                
+                                <div class="space-y-1">
+                                    <label for="email" class="block text-sm font-medium">Email Address</label>
+                                    <input type="email" id="email" name="email" required 
+                                        class="input-field w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                
+                                <div class="space-y-1">
+                                    <label for="business" class="block text-sm font-medium">Business Type</label>
+                                    <select id="business" name="business" 
+                                        class="input-field w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option value="">Select your industry</option>
+                                        <option value="restaurant">Restaurant/Hospitality</option>
+                                        <option value="dental">Dental Clinic</option>
+                                        <option value="medical">Medical Practice</option>
+                                        <option value="other">Other Service Business</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="space-y-1">
+                                    <label for="message" class="block text-sm font-medium">Your Message</label>
+                                    <textarea id="message" name="message" rows="4" required 
+                                        class="input-field w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                                </div>
+                                
+                                <button type="submit" 
+                                    class="w-full bg-primary hover:bg-secondary text-darkbg font-bold py-3 px-6 rounded-lg transition-colors relative overflow-hidden holographic-effect">
+                                    <span class="relative z-10">Send Message</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-8">
+                        <div class="glass-card rounded-2xl p-8">
+                            <h2 class="text-2xl font-bold mb-6">Contact Information</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mt-1">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Email Us</h3>
+                                        <p class="text-gray-600 dark:text-gray-400">hello@xyntra.ai</p>
+                                        <p class="text-gray-600 dark:text-gray-400">support@xyntra.ai</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mt-1">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Call Us</h3>
+                                        <p class="text-gray-600 dark:text-gray-400">+1 (800) 996-8722</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-500">Mon-Fri, 9am-5pm PST</p>
+                                    </div>
+                                </div> -->
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mt-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Visit Us</h3>
+                                        <p class="text-gray-600 dark:text-gray-400">I-8 Markaz</p>
+                                        <p class="text-gray-600 dark:text-gray-400">Islamabad, Pakistan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8">
+                            <h2 class="text-2xl font-bold mb-4">Connect With Us</h2>
+                            <p class="mb-6">Follow us on social media for the latest updates and AI insights.</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkcard text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <img src="logo.png" style="width:180px; height:40px;"> 
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>© 2025 XYNTRA AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

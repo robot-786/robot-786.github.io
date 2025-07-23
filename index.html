@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYNTRA | AI Voice Assistant for Appointment Booking</title>
+    <meta name="description" content="AI-powered voice assistant that answers calls, books appointments, and handles customer service for restaurants, medical clinics, and service businesses">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FEBE00",
+                        secondary: "#FF8C00",
+                        darkbg: "#121212",
+                        darkcard: "#1E1E1E",
+                        lightbg: "#FAFAFA",
+                        lightcard: "#FFFFFF"
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s ease-in-out infinite',
+                        'wave': 'wave 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        wave: {
+                            '0%': { transform: 'scaleY(1)' },
+                            '50%': { transform: 'scaleY(1.5)' },
+                            '100%': { transform: 'scaleY(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+          section {
+        position: relative;
+        z-index: 10; /* Higher z-index to ensure sections are clickable */
+    }
+    footer {
+        position: relative;
+        z-index: 10; /* Higher z-index to ensure sections are clickable */
+    }
+        /* Floating Button Styles */
+        .floating-demo-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 50;
+        background-color: #FEBE00;
+        color: #121212;
+        font-weight: bold;
+        padding: 12px 24px;
+        border-radius: 50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        cursor: pointer;
+        animation: pump 1.5s infinite ease-in-out; /* Pumping animation */
+    }
+
+    .floating-demo-button:hover {
+        background-color: #FF8C00;
+        transform: scale(1.1);
+    }
+
+    /* Pumping animation */
+    @keyframes pump {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+    /* Floating particles background */
+    .floating-particles {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0; /* Lower z-index to avoid overlapping sections */
+    }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(254,190,0,0.15) 0%, rgba(0,0,0,0) 50%);
+        }
+        .voice-wave {
+            position: relative;
+        }
+        .voice-wave::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1440,21.2101911 C1292.71305,35.9273749 1126.55759,42.8659564 941.533621,42.0259355 C685.76063,40.8913259 482.035464,21.2101911 240.000169,21.2101911 C158.070871,21.2101911 78.7122329,25.8467316 0,35.9273749 L0,120 L1440,120 L1440,21.2101911 Z' fill='%23FEBE00'/%3E%3C/svg%3E") no-repeat;
+            background-size: cover;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .glass-card {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-lightbg text-gray-800 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300">
+    <!-- Floating Particles Background -->
+    <div class="fixed inset-0 overflow-hidden z-0">
+        <div class="absolute top-1/4 left-1/5 w-3 h-3 bg-primary rounded-full animate-float opacity-70"></div>
+        <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-secondary rounded-full animate-float opacity-50 animation-delay-2000"></div>
+        <div class="absolute bottom-1/5 left-1/3 w-4 h-4 bg-primary rounded-full animate-float opacity-60 animation-delay-4000"></div>
+        <div class="absolute top-1/2 right-1/5 w-3 h-3 bg-secondary rounded-full animate-float opacity-80 animation-delay-3000"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkcard/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="logo.png" style="width:180px; height:40px;"> 
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                <a href="#industries" class="font-medium hover:text-primary transition-colors">Industries</a>
+                <a href="#demo" class="font-medium hover:text-primary transition-colors">Demo</a>
+                <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:block bg-primary hover:bg-secondary text-darkbg font-semibold px-6 py-2 rounded-lg transition-colors">
+                    Get Started
+                </a>
+                <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-darkcard border-t border-gray-100 dark:border-gray-800">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                <a href="#industries" class="font-medium hover:text-primary transition-colors">Industries</a>
+                <a href="#demo" class="font-medium hover:text-primary transition-colors">Demo</a>
+                <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="bg-primary hover:bg-secondary text-darkbg font-semibold px-6 py-2 rounded-lg text-center transition-colors">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-32 hero-gradient voice-wave">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">AI Voice Assistants</span><br>
+                    That Never Miss a Call
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                    Transform missed calls into booked appointments for your restaurant, clinic, or service business.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#demo" class="bg-primary hover:bg-secondary text-darkbg font-semibold px-8 py-3 rounded-lg transition-colors">
+                        See Demo <i class="fas fa-play ml-2"></i>
+                    </a>
+                    <a href="#pricing" class="border-2 border-primary text-primary hover:bg-primary/10 font-semibold px-8 py-3 rounded-lg transition-colors">
+                        View Pricing
+                    </a>
+                </div>
+            </div>
+            <div class="mt-16 max-w-4xl mx-auto glass-card rounded-2xl p-8 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/3">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="AI Voice Assistant" class="rounded-xl w-full h-auto">
+                            <div class="absolute -bottom-4 -right-4 bg-primary text-darkbg p-3 rounded-lg shadow-lg">
+                                <i class="fas fa-headset text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold mb-4">"Hello, this is your AI receptionist. How may I help you today?"</h3>
+                        <p class="mb-6">Our AI voice assistants handle calls naturally, book appointments, answer FAQs, and provide 24/7 customer service - just like a human receptionist.</p>
+                        <div class="flex space-x-3">
+                            <div class="w-3 h-6 bg-primary rounded-full animate-wave"></div>
+                            <div class="w-3 h-8 bg-secondary rounded-full animate-wave animation-delay-200"></div>
+                            <div class="w-3 h-10 bg-primary rounded-full animate-wave animation-delay-400"></div>
+                            <div class="w-3 h-8 bg-secondary rounded-full animate-wave animation-delay-600"></div>
+                            <div class="w-3 h-6 bg-primary rounded-full animate-wave animation-delay-800"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Floating Button -->
+    <a class="floating-demo-button" onclick="window.location.href='contact.html';">
+        Book Free Demo
+    </a>
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Powerful Features for Your Business</h2>
+                <p class="text-xl max-w-2xl mx-auto">Our AI voice assistants handle all aspects of customer communication</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Appointment Booking</h3>
+                    <p>Never miss a booking opportunity. Our AI handles calls anytime, even after hours, and integrates with your calendar system.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Natural Conversations</h3>
+                    <p>Human-like voice interactions that understand context, accents, and complex requests with industry-specific knowledge.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Performance Analytics</h3>
+                    <p>Detailed insights on call volumes, conversion rates, peak times, and customer satisfaction metrics.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-sync-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Seamless Integrations</h3>
+                    <p>Connect with your existing CRM, calendar, booking system, and notification platforms.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-user-shield text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-Language Support</h3>
+                    <p>Serve customers in their preferred language with fluent support for English, Spanish, and more.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-bell text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Automated Reminders</h3>
+                    <p>Reduce no-shows with personalized SMS and email reminders for upcoming appointments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Tailored for Your Industry</h2>
+                <p class="text-xl max-w-2xl mx-auto">Custom AI solutions designed for specific business needs</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <i class="fas fa-utensils text-6xl text-darkbg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Restaurants</h3>
+                    <p class="mb-4">Handle reservations, waitlist management, special requests, and FAQs with a friendly AI hostess.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Table reservations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Waitlist updates</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Menu questions</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <i class="fas fa-user-md text-6xl text-darkbg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Medical Clinics</h3>
+                    <p class="mb-4">Book cleanings, handle cancellations, answer insurance questions, and send reminders.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Appointment scheduling</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Insurance verification</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Pre-appointment instructions</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <i class="fas fa-question-circle text-6xl text-darkbg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Customer Support</h3>
+                    <p class="mb-4">Handle customer queries, order tracking, and return/refund requests with ease..</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Real-time order updates</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Automated returns & refunds</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> 24/7 support availability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-bold mb-6">Experience Our AI in Action</h2>
+                    <p class="text-xl mb-8">Listen to how our voice assistant naturally handles a typical call for your industry.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Restaurant Reservation Demo</h4>
+                                <audio controls class="w-full">
+                                    <source src="#" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Dental Appointment Demo</h4>
+                                <audio controls class="w-full">
+                                    <source src="#" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-robot text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Conversation Transcript</h3>
+                                <p class="text-sm">Sample dental clinic call</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <p class="font-medium text-primary">Caller:</p>
+                                <p>"Hi, I need to schedule a cleaning appointment."</p>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg">
+                                <p class="font-medium text-primary">AI Assistant:</p>
+                                <p>"I'd be happy to help with that. May I have your name and date of birth for verification?"</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <p class="font-medium text-primary">Caller:</p>
+                                <p>"It's John Smith, 05/15/1985."</p>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg">
+                                <p class="font-medium text-primary">AI Assistant:</p>
+                                <p>"Thank you, John. I see you're due for your 6-month cleaning. We have openings next Tuesday at 2pm or Thursday at 10am. Which works better for you?"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl max-w-2xl mx-auto">Pay only for what you need with no hidden fees</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="glass-card rounded-2xl p-8 hover:shadow-lg transition-all">
+                    <h3 class="text-xl font-bold mb-2">Starter</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">For small businesses</p>
+                    <p class="text-4xl font-bold mb-6">$99<span class="text-lg text-gray-500 dark:text-gray-400">/mo</span></p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Up to 100 calls/mo</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Basic appointment booking</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Email notifications</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> 1 calendar integration</li>
+                    </ul>
+                    <button class="w-full border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-full transition-all" onclick="window.location.href='contact.html';">
+                        Get Started
+                    </button>
+                </div>
+                <div class="glass-card border-2 border-primary rounded-2xl p-8 bg-primary/5 relative">
+                    <div class="absolute top-0 right-0 bg-primary text-darkbg px-4 py-1 rounded-bl-lg rounded-tr-2xl text-sm font-bold">Popular</div>
+                    <h3 class="text-xl font-bold mb-2">Professional</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">For growing businesses</p>
+                    <p class="text-4xl font-bold mb-6">$249<span class="text-lg text-gray-500 dark:text-gray-400">/mo</span></p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Up to 500 calls/mo</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Advanced scheduling</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> SMS confirmations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> 3 calendar integrations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Basic analytics</li>
+                    </ul>
+                    <button class="w-full bg-primary hover:bg-secondary text-darkbg font-bold py-3 px-8 rounded-full transition-all" onclick="window.location.href='contact.html';">
+                        Get Started
+                    </button>
+                </div>
+                <div class="glass-card rounded-2xl p-8 hover:shadow-lg transition-all">
+                    <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">For large organizations</p>
+                    <p class="text-4xl font-bold mb-6">Custom</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Unlimited calls</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Multi-location support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Custom integrations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Advanced analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Dedicated support</li>
+                    </ul>
+                    <button class="w-full border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-full transition-all" onclick="window.location.href='contact.html';">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-darkbg">Ready to Transform Your Customer Service?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto text-darkbg">Start converting missed calls into booked appointments today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contact.html" class="bg-darkbg hover:bg-opacity-90 text-primary font-bold px-8 py-4 rounded-lg transition-colors">
+                    Get Started Now
+                </a>
+                <a href="#demo" class="bg-white/20 hover:bg-white/30 text-darkbg font-bold px-8 py-4 rounded-lg border-2 border-darkbg transition-colors">
+                    See Full Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkcard text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">   
+                <img src="logo.png" style="width:180px; height:40px;"> 
+                    </div>
+                    <p class="mb-4">AI voice assistants that transform customer service for service businesses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Industries</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
+                        <!-- <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Press</a></li> -->
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
+                            hello@xyntra.ai
+                        </li>
+                        <!-- <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            (800) 996-8722
+                        </li> -->
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            Islamabad, Pakistan
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>© 2025 XYNTRA AI. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+          // Smooth scrolling for floating button
+          document.querySelector('.floating-demo-button').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
