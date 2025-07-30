@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About XYNTRA - AI Voice Assistants for Service Businesses</title>
+    <meta name="description" content="Discover how XYNTRA's AI voice assistants transform customer service for restaurants, clinics, and service businesses with human-like conversational AI">
+    <meta name="keywords" content="AI voice assistant, restaurant reservation AI, medical appointment scheduling, dental clinic receptionist, customer service automation">
+    <meta name="author" content="XYNTRA">
+    <meta property="og:title" content="About XYNTRA - AI Voice Assistants for Service Businesses">
+    <meta property="og:description" content="Human-like AI voice assistants that never miss a call">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FEBE00",
+                        darkbg: "#121212",
+                        lightbg: "#FAFAFA"
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA;
+            color: #333;
+        }
+        
+        .dark body {
+            background-color: #121212;
+            color: #f3f3f3;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(254, 190, 0, 0.3);
+        }
+        
+        .holographic-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .dark .holographic-card {
+            background: rgba(30, 30, 30, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-dot {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.35em;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #FEBE00;
+            border: 3px solid rgba(254, 190, 0, 0.3);
+        }
+        
+        .timeline-connector {
+            position: relative;
+        }
+        
+        .timeline-connector::after {
+            content: '';
+            position: absolute;
+            left: 0.35em;
+            top: 1.5rem;
+            bottom: -1.5rem;
+            width: 2px;
+            background: rgba(254, 190, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .reverse-columns {
+                flex-direction: column-reverse;
+            }
+        }
+        
+        /* Animation for the AI voice visualization */
+        .voice-bar {
+            animation: voicePulse 1.5s infinite ease-in-out;
+        }
+        
+        .voice-bar:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .voice-bar:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .voice-bar:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+        .voice-bar:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+        
+        @keyframes voicePulse {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.5); }
+        }
+    </style>
+</head>
+<body class="bg-lightbg dark:bg-darkbg transition-colors duration-300">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkcard/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="logo.png" style="width:180px; height:40px;"> 
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                <a href="#industries" class="font-medium hover:text-primary transition-colors">Industries</a>
+                <a href="#demo" class="font-medium hover:text-primary transition-colors">Demo</a>
+                <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:block bg-primary hover:bg-secondary text-darkbg font-semibold px-6 py-2 rounded-lg transition-colors">
+                    Get Started
+                </a>
+                <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-darkcard border-t border-gray-100 dark:border-gray-800">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                <a href="#industries" class="font-medium hover:text-primary transition-colors">Industries</a>
+                <a href="#demo" class="font-medium hover:text-primary transition-colors">Demo</a>
+                <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="bg-primary hover:bg-secondary text-darkbg font-semibold px-6 py-2 rounded-lg text-center transition-colors">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-transparent"></div>
+            <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-primary rounded-full filter blur-3xl opacity-10 animate-float"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-primary rounded-full filter blur-3xl opacity-5 animate-float animation-delay-2000"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 py-20 md:py-32 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-amber-600">Human-Centered AI</span><br>
+                    That Never Misses a Call
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    XYNTRA's voice assistants transform missed calls into booked appointments for restaurants, clinics, and service businesses.
+                </p>
+                
+                <!-- AI Voice Visualization -->
+                <div class="flex justify-center items-end h-16 space-x-1 mb-12">
+                    <div class="voice-bar w-2 h-6 bg-primary rounded-t-full"></div>
+                    <div class="voice-bar w-2 h-10 bg-primary rounded-t-full"></div>
+                    <div class="voice-bar w-2 h-16 bg-primary rounded-t-full"></div>
+                    <div class="voice-bar w-2 h-10 bg-primary rounded-t-full"></div>
+                    <div class="voice-bar w-2 h-6 bg-primary rounded-t-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="holographic-card rounded-3xl p-8 md:p-12 shadow-lg neon-glow">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="XYNTRA team discussing AI technology" 
+                             class="rounded-xl w-full h-auto shadow-xl"
+                             loading="lazy">
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
+                        <p class="text-lg mb-6">
+                            In 2019, our founder Dr. Emily Wilson grew frustrated watching her dental practice lose patients to unanswered calls. She envisioned AI that could handle these conversations with human warmth and precision.
+                        </p>
+                        <p class="mb-8">
+                            Today, XYNTRA serves hundreds of businesses across North America, converting missed calls into revenue opportunities while freeing staff to focus on in-person service.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">24/7 Availability</span>
+                            <span class="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">94% Satisfaction</span>
+                            <span class="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Human-Like AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Our Journey</h2>
+                
+                <div class="space-y-8 pl-6">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-dot timeline-connector">
+                        <h3 class="text-2xl font-bold mb-2">2019 - Foundation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Founded after Dr. Wilson's dental practice missed 37 appointments in one month due to unanswered calls.
+                        </p>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-dot timeline-connector">
+                        <h3 class="text-2xl font-bold mb-2">2020 - First Deployment</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Piloted in 12 dental clinics, reducing missed appointments by 62% and increasing after-hours bookings by 210%.
+                        </p>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-dot timeline-connector">
+                        <h3 class="text-2xl font-bold mb-2">2021 - Industry Expansion</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Adapted technology for restaurants and medical practices, serving 200+ businesses nationwide.
+                        </p>
+                    </div>
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-dot">
+                        <h3 class="text-2xl font-bold mb-2">2023 - Today</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Processing 50,000+ calls monthly with industry-leading customer satisfaction scores.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">The Minds Behind XYNTRA</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Team Member 1 -->
+                <div class="holographic-card rounded-2xl p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Dr. Emily Wilson" 
+                             class="w-full h-full object-cover"
+                             loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Dr. Emily Wilson</h3>
+                    <p class="text-primary mb-3">Founder & CEO</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        Former dental practitioner turned AI entrepreneur
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" aria-label="LinkedIn profile" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="holographic-card rounded-2xl p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Raj Patel" 
+                             class="w-full h-full object-cover"
+                             loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Raj Patel</h3>
+                    <p class="text-primary mb-3">CTO</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        Natural Language Processing expert from Stanford
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" aria-label="GitHub profile" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-github text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="holographic-card rounded-2xl p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Sarah Johnson" 
+                             class="w-full h-full object-cover"
+                             loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Sarah Johnson</h3>
+                    <p class="text-primary mb-3">Head of Customer Experience</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        15 years in hospitality management
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" aria-label="Email contact" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Our Core Principles</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Value 1 -->
+                <div class="holographic-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 mx-auto text-2xl">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Conversational Intelligence</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-400">
+                        Our AI understands context, nuance, and emotion—just like your best receptionist.
+                    </p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="holographic-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 mx-auto text-2xl">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Relentless Reliability</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-400">
+                        99.9% uptime with enterprise-grade security and HIPAA compliance where needed.
+                    </p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="holographic-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 mx-auto text-2xl">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Service Obsession</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-400">
+                        We measure success by your customers' satisfaction with every interaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+       <!-- Footer -->
+    <footer class="bg-darkcard text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">   
+                <img src="logo.png" style="width:180px; height:40px;"> 
+                    </div>
+                    <p class="mb-4">AI voice assistants that transform customer service for service businesses.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/ai_xyntra" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/xyntra-ai-85870b375/" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>    
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Industries</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
+                        <!-- <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Press</a></li> -->
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
+                            hello@xyntra.ai
+                        </li>
+                        <!-- <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            (800) 996-8722
+                        </li> -->
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            Islamabad, Pakistan
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>© 2025 XYNTRA AI. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "XYNTRA",
+      "url": "https://xyntra.ai",
+      "logo": "https://xyntra.ai/logo.png",
+      "description": "AI voice assistants that transform missed calls into booked appointments for service businesses",
+      "foundingDate": "2019",
+      "founder": {
+        "@type": "Person",
+        "name": "Dr. Emily Wilson"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 AI Boulevard",
+        "addressLocality": "San Francisco",
+        "addressRegion": "CA",
+        "postalCode": "94107",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-800-996-8722",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+</body>
+</html>
