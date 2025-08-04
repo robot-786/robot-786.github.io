@@ -60,7 +60,7 @@
         .floating-demo-button {
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 20px;
         z-index: 50;
         background-color: #FEBE00;
         color: #121212;
@@ -77,7 +77,7 @@
         background-color: #FF8C00;
         transform: scale(1.1);
     }
-
+ 
     /* Pumping animation */
     @keyframes pump {
         0%, 100% {
@@ -123,6 +123,7 @@
     </style>
 </head>
 <body class="bg-lightbg text-gray-800 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300">
+   
     <!-- Floating Particles Background -->
     <div class="fixed inset-0 overflow-hidden z-0">
         <div class="absolute top-1/4 left-1/5 w-3 h-3 bg-primary rounded-full animate-float opacity-70"></div>
@@ -570,5 +571,17 @@
             });
         });
     </script>
+
+    <!--Start of webagaent-->
+   <script type="text/javascript">
+    (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://webagent.ai/api/chatbot/d25f972a-4cc9-4a70-ac11-8c23af35292a";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+</script>
+    <!--End of webagent-->
 </body>
 </html>
