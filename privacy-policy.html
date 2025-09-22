@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms of Service | XYNTRA AI</title>
+    <meta name="description" content="Privacy Policy and Terms of Service for XYNTRA AI voice assistant services">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Xyntra" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FEBE00",
+                        secondary: "#FF8C00",
+                        darkbg: "#121212",
+                        darkcard: "#1E1E1E",
+                        lightbg: "#FAFAFA",
+                        lightcard: "#FFFFFF"
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s ease-in-out infinite',
+                        'wave': 'wave 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        wave: {
+                            '0%': { transform: 'scaleY(1)' },
+                            '50%': { transform: 'scaleY(1.5)' },
+                            '100%': { transform: 'scaleY(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .policy-section {
+            scroll-margin-top: 100px;
+        }
+        .nav-link.active {
+            color: #FEBE00;
+            border-left: 3px solid #FEBE00;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .glass-card {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-lightbg text-gray-800 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkcard/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="logo.png" alt="Xyntra AI logo" style="width:180px; height:69.7px;"> 
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="/" class="font-medium hover:text-primary transition-colors">Home</a>
+                <a href="/#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                <a href="/#industries" class="font-medium hover:text-primary transition-colors">Industries</a>
+                <a href="/#demo" class="font-medium hover:text-primary transition-colors">Demo</a>
+                <a href="/#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:block bg-primary hover:bg-secondary text-darkbg font-semibold px-6 py-2 rounded-lg transition-colors">
+                    Get Started
+                </a>
+                <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-darkcard border-t border-gray-100 dark:border-gray-800">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="/" class="font-medium hover:text-primary transition-colors">Home</a>
+                <a href="/#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                <a href="/#industries" class="font-medium hover:text-primary transition-colors">Industries</a>
+                <a href="/#demo" class="font-medium hover:text-primary transition-colors">Demo</a>
+                <a href="/#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+                <a href="contact.html" class="bg-primary hover:bg-secondary text-darkbg font-semibold px-6 py-2 rounded-lg text-center transition-colors">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen py-12">
+        <div class="container mx-auto px-6">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Privacy & Terms</h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Your privacy and trust are important to us. Learn how we protect your data and govern our services.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
+                <!-- Navigation Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="bg-gray-800 dark:bg-darkcard glass-card rounded-xl p-6 sticky top-24">
+                        <h3 class="text-lg font-bold mb-4">Quick Navigation</h3>
+                        <nav class="space-y-2">
+                            <a href="#privacy-policy" class="block py-2 px-4 nav-link active hover:text-primary transition-colors">Privacy Policy</a>
+                            <a href="#terms-of-service" class="block py-2 px-4 nav-link hover:text-primary transition-colors">Terms of Service</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Content Area -->
+                <div class="lg:w-3/4">
+                    <!-- Privacy Policy -->
+                    <section id="privacy-policy" class="policy-section glass-card rounded-xl p-8 mb-8">
+                        <h2 class="text-3xl font-bold mb-6 text-primary">Privacy Policy</h2>
+                        <p class="mb-6 text-gray-500 dark:text-gray-400">Last updated: September 22, 2025</p>
+
+                        <div class="space-y-8">
+                            <div>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                                    We respect user privacy and comply with all applicable data‐protection laws (e.g. GDPR in the EU/UK, CCPA in California) when handling personal data. <em>Personal data</em> is defined broadly as any information related to an identified or identifiable person. For example, GDPR explicitly cites names, addresses and phone numbers as personal data. Consequently, our service only collects the minimal information needed for each function (the principle of data minimisation). In a restaurant-order bot scenario we may collect a customer's name, address, and phone number; in a clinic appointment bot we would also collect age and insurance details (the latter being health-related "sensitive" data); and in an e-commerce support bot we might additionally collect order numbers or purchase details. We collect these details only as required to perform the service (e.g. to book a table, schedule an appointment, or process an order) and we do <em>not</em> harvest or store any data outside the scope of providing the service.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Data Minimisation</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We follow GDPR's mandate that data be "adequate, relevant and limited to what is necessary" for the purpose. We do not keep unnecessary fields just in case. For instance, if a clinic partner requires your insurance to book an appointment, we collect it; if not, we do not request it.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Use and Sharing</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We use personal data only to provide the service and (when requested) to share with our client companies (e.g. the restaurant, clinic, or retailer). We do not sell user data. Any sharing with third parties is strictly on an as-needed basis. Our contracts with service providers (e.g. OpenAI for language processing, DeepGram for transcription, Twilio for SMS, Calendly for scheduling, or Google Sheets for data logging) specify that those providers act only as processors under our instruction. For example, DeepGram's privacy policy notes that customer data is processed only on the controller's instructions. Likewise, Twilio states it uses binding corporate rules to protect data "regardless of [its] origin or destination". We recommend users also review the privacy terms of these providers, as they each maintain robust security and confidentiality measures.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Data Retention</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We retain personal data only as long as needed for the service. In accordance with GDPR's "storage limitation" principle, we keep data no longer than necessary. For example, if you place a restaurant order, we hold your details to communicate with the restaurant and, if authorized, for possible future re-orders; once your order is complete (or after any retention period set by the restaurant), we delete or anonymize the data. Similarly, booking or appointment data is deleted after the appointment or as required by the client company.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Security</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We implement appropriate technical and organizational safeguards to protect data. Under GDPR Article 32, a controller must apply "appropriate technical and organisational measures to ensure a level of security appropriate to the risk". We follow this by using industry-standard encryption for data in transit and at rest, access controls, secure servers, regular security audits, and staff training. Only authorized personnel and contracted processors can access personal data, and we train them to handle data confidentially.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">User Rights</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We honor user rights under all applicable laws. Under EU/UK GDPR, individuals have rights to access their data, receive information about how it is used, correct errors, erase data ("right to be forgotten"), restrict or object to processing, and obtain a copy of their data (data portability). Under the UK GDPR and Data Protection Act, the same rights apply. Under the California Privacy Rights Act (CPRA, amending CCPA), Californians additionally have rights to know what categories of personal information we collect and why, to delete their information, to correct inaccuracies, to opt out of any sale/sharing of their data, and to limit use of sensitive information. We will respond promptly to any verified request to exercise these rights (e.g. providing or deleting your data) as required by law. We will also give notice of any privacy practices at the time of data collection, and we will not discriminate against you for exercising your rights.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Global Compliance</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    Because we operate internationally (US, UK, EU), our policy is written as a <em>global privacy policy</em> covering all jurisdictions. It includes our lawful basis for processing, the types of personal data collected, purposes of processing, sharing practices, security measures, and user rights in clear language. We comply with GDPR (EU/UK), CCPA/CPRA (California), and any other relevant regional laws. For California residents, note that their rights under CCPA supplement the above. For EU/UK residents, GDPR grants extensive protections (personal data must be processed transparently, for a specific purpose, and with security safeguards). We are not formally licensed or regulated as a medical or legal entity, so if our service is used in a healthcare or legal context, we will make clear we do not provide professional advice (see Terms below).
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Children's Privacy</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We do not knowingly collect personal data from children under 16 (or any higher age threshold required by local law). If a minor uses our service, it must be with parental consent. Any discovered children's data will be deleted if not legally permitted.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">Contact and Updates</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We may update this Privacy Policy as laws or our practices change. All changes will be posted here with an updated date. For any privacy questions or to exercise your rights, please contact us at <a href="mailto:xyntra.ai@gmail.com" class="text-primary hover:text-secondary transition-colors">xyntra.ai@gmail.com</a>. We are committed to safeguarding your privacy and resolving any concerns promptly.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Terms of Service -->
+                    <section id="terms-of-service" class="policy-section glass-card rounded-xl p-8 mb-8">
+                        <h2 class="text-3xl font-bold mb-6 text-primary">Terms of Service</h2>
+                        <p class="mb-6 text-gray-500 dark:text-gray-400">Last updated: September 22, 2025</p>
+
+                        <div class="space-y-8">
+                            <div>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                                    By using our service (website, app, or chatbot), you agree to these Terms of Service. These terms constitute a legally binding agreement between you and us. If you do not agree, please do not use the service. These terms may be updated from time to time; continued use after changes indicates acceptance.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">1. Service Use</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We grant you a limited, non-exclusive, non-transferable license to use our services for their intended purpose. You must be at least the legal age in your jurisdiction to use the service. You agree to use the service only in compliance with all laws and these terms. You will not (a) impersonate others or provide false information, (b) harass, threaten, or harm other users, or (c) misuse the service (for example, by attempting to gain unauthorized access, disrupting the service, or violating third-party rights). You understand that our service provides automated assistance (for orders, appointments, support, etc.) and is not a human agent.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">2. Content and Ownership</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    All content and software provided on this service (text, code, designs, trademarks, images, etc.) are owned by us or our licensors and are protected by intellectual property laws. You may not copy, reproduce, distribute, modify, create derivative works, or publicly display our content without our express permission. Any content you submit (e.g. name, address, questions) remains your information, but you grant us a worldwide license to use that content for providing the service and improving our systems. If you contribute user-generated content (e.g. feedback), you grant us a non-exclusive, royalty-free, perpetual license to use it.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">3. No Professional Advice</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    <strong>If the service is used for healthcare or legal support,</strong> it is provided only for informational or facilitation purposes. We are <em>not</em> doctors, lawyers, or licensed professionals. Any information or recommendations are not substitutes for professional advice. For example, our Terms will clarify that "the service is general in nature and not intended to be a substitute for professional medical or legal advice" and that reliance on the service's information is "solely at your own risk". Always consult qualified professionals for personalized advice.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">4. Third-Party Services</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    The service may rely on third-party providers (e.g. OpenAI, DeepGram, Twilio, Calendly). Your use of our service may involve their products. Those providers have their own terms and privacy policies; by using the service, you acknowledge they process your data on our behalf. We assume no responsibility for the content or policies of these third parties beyond our contractual obligations.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">5. Disclaimers and Limitation of Liability</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    Except where prohibited by law, the service is provided <em>"as is"</em> without any warranties, either express or implied. We do not guarantee that the service will be uninterrupted, error-free, or secure. We expressly disclaim any warranty of accuracy or fitness for a particular purpose. For example, legal advice sources recommend stating clearly that the service is provided "as is" and <em>no</em> guarantees are made. To the maximum extent permitted by law, we will not be liable for any indirect, incidental, special or consequential damages, lost profits, or loss of data arising from your use of the service. Our total liability (if any) for direct damages is limited to the amount you have paid us (if applicable) or USD $100, whichever is greater. In California and other jurisdictions, these disclaimers and liability limits will not apply to the extent they conflict with mandatory consumer protection laws.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">6. User Indemnification</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    You agree to defend, indemnify, and hold us harmless from any claims, damages or expenses (including reasonable attorneys' fees) arising from your violation of these Terms or any third-party rights.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">7. Governing Law and Dispute Resolution</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    These Terms are governed by the laws of the jurisdiction where our company is established (or, if we have no formal domicile, by a neutral law such as English law). We recommend including a clear governing law clause. Any disputes arising under these Terms will be resolved by negotiation or, if necessary, in the courts or arbitration of the agreed jurisdiction. For example, experts advise specifying a dispute process and jurisdiction in the Terms.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">8. Termination</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We may suspend or terminate your access if you breach these Terms or engage in misconduct. You may also stop using the service at any time. Termination will not limit any rights or obligations that accrued prior to termination.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-primary">9. Changes to Terms</h3>
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                    We reserve the right to modify these Terms. We will notify you of significant changes (e.g. via email or a notice on the site) at least 30 days before they take effect. Continued use of the service after changes signifies your acceptance of the new Terms.
+                                </p>
+                            </div>
+
+                            <div class="bg-primary/5 p-6 rounded-lg border border-primary/20">
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                    By using our service, you accept and agree to comply with these Privacy and Terms provisions. If you have any questions about these policies or your rights, please contact us.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Information -->
+                    <div class="glass-card rounded-xl p-8 mt-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4">Questions About Our Policies?</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mb-6">Contact us for clarification or concerns about privacy and terms</p>
+                        <a href="contact.html" class="bg-primary hover:bg-secondary text-darkbg font-bold py-3 px-8 rounded-lg transition-colors inline-block">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkcard text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">   
+                        <img src="logo.png" alt="Xyntra AI Logo" style="width:180px; height:69.7px;"> 
+                    </div>
+                    <p class="mb-4">AI voice assistants that transform customer service for service businesses.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/ai_xyntra" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/xyntra-ai" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-darkbg transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>    
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/#features" class="hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="/#industries" class="hover:text-primary transition-colors">Industries</a></li>
+                        <li><a href="/#pricing" class="hover:text-primary transition-colors">Pricing</a></li>
+                        <li><a href="/#demo" class="hover:text-primary transition-colors">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
+                            xyntra.ai@gmail.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            920 Amsterdam Avenue, New York
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>© 2025 XYNTRA AI. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="privacy-policy.html" class="text-primary">Privacy Policy</a>
+                    <a href="privacy-policy.html#terms-of-service" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('.policy-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <!--Start of webagent-->
+    <script type="text/javascript">
+        (function () {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://webagent.ai/api/chatbot/d25f972a-4cc9-4a70-ac11-8c23af35292a";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+    <!--End of webagent-->
+</body>
+</html>
